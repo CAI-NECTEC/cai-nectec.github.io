@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AV-FlowSep</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop has-text-centered is-centered">
+        <div style="display: flex; justify-content: flex-end; padding-bottom: 1.5rem;">
+          <img src="asset/image/Interspeech.png" alt="Interspeech 2026" style="width: 25%; min-width: 200px; height: auto;">
+        </div>
+        <h1 class="title is-1 publication-title">
+          AV-FlowSep: Audio-Visual Target Speaker Separation via Flow Matching<br>
+          <span class="subtitle is-3"></span>
+        </h1>
+        
+        
+        <div class="is-size-5 publication-authors">
+          <span class="author-block">Pattara Tipaksorn <sup>1</sup></span>
+          <span class="author-block">Wayupuk Sommuang<sup>2</sup></span>
+          <span class="author-block">Kwanchiva Thangthai<sup>3</sup></span>
+        </div>
+
+        <div class="is-size-5 publication-authors mt-3">
+          <span class="author-block"><sup>1</sup>Core Artificial Intelligence Research Team, NECTEC</span>
+        </div>
+        <div class="is-size-5 publication-authors mt-3">
+          <span class="author-block"><sup>2</sup>Sirindhorn International Institute of Technology (SIIT), Thammasat University</span>
+        </div>
+
+        <div class="column has-text-centered mt-4">
+          <h3>[<a href="#">
+            <span>Paper</span>
+          </a>
+          ]
+          [<a href="https://github.com/CAI-NECTEC/AV-FlowSep.git" target="_blank">
+            <span>Github</span>
+          </a>
+          ][
+          <a href="https://huggingface.co/nectec/av-flowsep" target="_blank">
+            <span>Huggingface</span>
+          </a>
+          ]
+          </h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              This work addresses the task of separating a target speaker’s
+              voice from mixtures using visual cues. While existing discrim-
+              inative approaches achieve strong speech intelligibility, gener-
+              ative diffusion-based methods improve perceptual quality but
+              require many iterative refinement steps. To address these limi-
+              tations, we propose AV-FlowSep, an audio-visual target speaker
+              separation based on conditional flow matching to learn direct
+              transport paths from mixture to clean mel-spectrogram. We
+              adopt a latent Diffusion Transformer where temporal visual
+              cues from the target speaker are integrated via cross-attention.
+              We demonstrate that AV-FlowSep can generate high perceptual
+              quality with as few as a single inference step. Experiments on
+              VoxCeleb2 and LRS2 across both speech-speech and speech-
+              noise scenarios, show that our approach achieves competitive
+              or superior performance compared to existing baselines, with
+              strong cross-dataset generalization and practical computational
+              efficiency.
+            </p>
+            <!-- <b>
+              Github code is provided here 
+              <a href="https://github.com/CAI-NECTEC/AV-FlowSep.git">link</a>
+            </b>
+            <br>
+            <b>
+              Huggingface page is provided here 
+              <a href="https://huggingface.co/nectec/av-flowsep">link</a>
+            </b> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop has-text-centered">
+      <h2 class="title is-3">Demo Video</h2>
+      
+      <div class="columns is-centered">
+        <div class="column">
+          <p><strong>Overlapped Speech</strong></p>
+          <div class="video-placeholder">
+            <video controls >
+              <source src="asset/video/audio_76/normal.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column">
+          <p><strong>Prediction 1</strong></p>
+          <div class="video-placeholder">
+            <video controls>
+              <source src="asset/video/audio_76/g1.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column">
+          <p><strong>Prediction 2</strong></p>
+          <div class="video-placeholder">
+            <video controls>
+              <source src="asset/video/audio_76/g2.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column">
+          <p><strong>Overlapped Speech</strong></p>
+          <div class="video-placeholder">
+            <video controls >
+              <source src="asset/video/audio_61/normal.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column">
+          <p><strong>Prediction 1</strong></p>
+          <div class="video-placeholder">
+            <video controls>
+              <source src="asset/video/audio_61/g1.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column">
+          <p><strong>Prediction 2</strong></p>
+          <div class="video-placeholder">
+            <video controls>
+              <source src="asset/video/audio_61/g2.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="columns is-centered">
+        <div class="column">
+          <p><strong>Overlapped Speech</strong></p>
+          <div class="video-placeholder">
+            <video controls >
+              <source src="asset/video/audio_73/normal.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column">
+          <p><strong>Prediction 1</strong></p>
+          <div class="video-placeholder">
+            <video controls>
+              <source src="asset/video/audio_73/g1.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column">
+          <p><strong>Prediction 2</strong></p>
+          <div class="video-placeholder">
+            <video controls>
+              <source src="asset/video/audio_73/g2.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="columns is-centered">
+        <div class="column">
+          <p><strong>Overlapped Speech</strong></p>
+          <div class="video-placeholder">
+            <video controls >
+              <source src="asset/video/audio_75/normal.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column">
+          <p><strong>Prediction 1</strong></p>
+          <div class="video-placeholder">
+            <video controls>
+              <source src="asset/video/audio_75/g1.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column">
+          <p><strong>Prediction 2</strong></p>
+          <div class="video-placeholder">
+            <video controls>
+              <source src="asset/video/audio_75/g2.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="columns is-centered">
+        <div class="column">
+          <p><strong>Overlapped Speech</strong></p>
+          <div class="video-placeholder">
+            <video controls >
+              <source src="asset/video/audio_95/normal.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column">
+          <p><strong>Prediction 1</strong></p>
+          <div class="video-placeholder">
+            <video controls>
+              <source src="asset/video/audio_95/g1.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <div class="column">
+          <p><strong>Prediction 2</strong></p>
+          <div class="video-placeholder">
+            <video controls>
+              <source src="asset/video/audio_95/g2.mp4",type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Demo Audio</h2>
+      <p class="has-text-centered mb-4">Comparison of the model across various model</p>
+      
+      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Type of Audio</th>
+            <th>GT</th>
+            <th>Male + Male</th>
+            <th>Male + Female]</th>
+            <th>Female + Female</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AVDiffuse</td>
+            <td>Audio</td>
+            <td>1 / 2</td>
+            <td>1 / 2</td>
+            <td>Audio 1 / 2</td>
+            <td>Audio 1 / 2</td>
+            <td>Audio 1 / 2</td>
+          </tr>
+          <tr>
+            <td>VisualVoice</td>
+            <td>Audio</td>
+            <td>1 / 2</td>
+            <td>1 / 2</td>
+            <td>Audio 1 / 2</td>
+            <td>Audio 1 / 2</td>
+            <td>Audio 1 / 2</td>
+          </tr>
+          <tr>
+            <td>VisualVoice</td>
+            <td>Audio</td>
+            <td>1 / 2</td>
+            <td>1 / 2</td>
+            <td>Audio 1 / 2</td>
+            <td>Audio 1 / 2</td>
+            <td>Audio 1 / 2</td>
+          </tr>
+          <tr>
+            <td>VisualVoice</td>
+            <td>Audio</td>
+            <td>1 / 2</td>
+            <td>1 / 2</td>
+            <td>Audio 1 / 2</td>
+            <td>Audio 1 / 2</td>
+            <td>Audio 1 / 2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Metric Comparison (demo)</h2>
+      <p class="has-text-centered mb-4">Comparison of metric across various model</p>
+      
+      <div class="table-container">
+        <table class="academic-table">
+          <thead>
+            <tr>
+              <th rowspan="4" class="align-bottom">Model</th>
+              <th rowspan="4" class="align-bottom">AV</th>
+              <th rowspan="4" class="align-bottom">Type</th>
+              <th rowspan="4" class="align-bottom">Steps</th>
+              <th colspan="5" class="bold-text">Speech-Speech Scenario</th>
+              <th rowspan="4" class="spacer"></th> <th colspan="5" class="bold-text">Speech-Noise Scenario</th>
+            </tr>
+            
+            <tr>
+              <th colspan="5" class="bottom-line pb-small">VoxCeleb2-2Mix</th>
+              <th colspan="5" class="bottom-line pb-small">VoxCeleb2-AudioSet</th>
+            </tr>
+            
+            <tr>
+              <th rowspan="2" class="align-bottom pb-small">MCD &darr;</th>
+              <th rowspan="2" class="align-bottom pb-small">PESQ &uarr;</th>
+              <th rowspan="2" class="align-bottom pb-small">MCD &darr;</th>
+              <th rowspan="2" class="align-bottom pb-small">PESQ &uarr;</th>
+            </tr>
+            
+            <tr>
+              <th class="pb-small">SIG &uarr;</th>
+              <th class="pb-small">BAK &uarr;</th>
+              <th class="pb-small">OVRL &uarr;</th>
+              <th class="pb-small">SIG &uarr;</th>
+              <th class="pb-small">BAK &uarr;</th>
+              <th class="pb-small">OVRL &uarr;</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TEST1 <a href="https://www.youtube.com/watch?v=4cQWJViybAQ">[0]</a></td>
+              <td>A+V</td>
+              <td>Diff</td>
+              <td>50</td>
+              
+              <td>3.45</td>
+              <td>4.12</td>
+              <td>3.67</td>
+              <td>1.23</td>
+              <td>2.89</td>
+              
+              <td></td> 
+              
+              <td>3.10</td>
+              <td>3.95</td>
+              <td>3.20</td>
+              <td>1.85</td>
+              <td>2.45</td>
+            </tr>
+            
+            <tr>
+              <td>VisualVoice <a href="https://www.youtube.com/watch?v=4cQWJViybAQ">[1]</a></td>
+              <td>A+V</td>
+              <td>Gen</td>
+              <td>-</td>
+              <td>3.21</td>
+              <td>3.88</td>
+              <td>3.41</td>
+              <td>1.55</td>
+              <td>2.60</td>
+              <td></td> 
+              <td>2.95</td>
+              <td>3.70</td>
+              <td>3.05</td>
+              <td>2.10</td>
+              <td>2.15</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+   -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <h2 class="title is-3 has-text-centered">Architecture</h2>
+    
+    <!-- Changed to is-desktop so they sit side-by-side on PC, but stack vertically on phones -->
+    <div class="columns is-centered is-desktop">
+      
+      <!-- Left Image Column -->
+      <div class="column is-half has-text-centered">
+        <!-- Replaced <embed> with <img> and added max-width: 100% so it shrinks on phones -->
+        <img src="asset/image/Architecture.png" alt="Architecture Left" style="max-width: 100%; height: auto;">
+      </div>
+      
+      <!-- Right Image Column -->
+      <div class="column is-half has-text-centered">
+        <img src="asset/image/Architecture2.png" alt="Architecture Right" style="max-width: 100%; height: auto;">
+      </div>
+      
+    </div>
+
+    <!-- Grouped the descriptions in a text content block for better spacing -->
+    <div class="content" style="margin-top: 1.5rem;">
+      <p><strong>(Left)</strong> AV-FlowSep adopt DiT as base network to learn a vector field to transform mel-spectrogram into clean mel-spectrogram, by recieveing Visual features and time step T as external values.</p>
+      <p><strong>(Right)</strong> Visual features and timesteps T will pass the MLP with separate injection path.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    
+    <h2 class="title is-3 has-text-centered">Benchmark</h2>
+    
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <!-- Replaced <embed> with <img> and removed the hardcoded 1160 width -->
+        <img src="asset/image/benchmark.png" alt="Benchmark Results" style="max-width: 100%; height: auto;">
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Model</h2>
+        </div>
+      </div>
+
+      <div id="Ref">
+        <span><a href="https://github.com/dmlguq456/SepReformer.git" target="_blank">[SepFormer]</a>
+          C. Subakan, M. Ravanelli, S. Cornell, M. Bronzi, and J. Zhong,
+“Attention Is All You Need In Speech Separation,” in ICASSP
+2021 - 2021 IEEE International Conference on Acoustics, Speech
+and Signal Processing (ICASSP), 2021, pp. 21–25.
+        </span>
+        <br>
+        <br>
+        <span><a href="https://github.com/facebookresearch/VisualVoice.git " target="_blank">[VisualVoice]</a>
+           R. Gao and K. Grauman, “VisualVoice: Audio-Visual Speech
+Separation with Cross-Modal Consistency,” in 2021 IEEE/CVF
+Conference on Computer Vision and Pattern Recognition (CVPR),
+2021, pp. 15 490–15 500.
+        </span>
+        <br>
+        <br>
+        <span> <a href="https://github.com/modelscope/ClearerVoice-Studio.git" target="_blank">[AVMossFormer]</a>
+          S. Zhao, Z. Pan, and B. Ma, “ClearerVoice-Studio: Bridging Ad-
+vanced Speech Processing Research and Practical Deployment,”
+in Interspeech 2025, 2025, pp. 2980–2984.
+        </span>
+        <br>
+        <br>
+        <span> <a href="https://github.com/kaistmm/AVDiffuSS.git" target="_blank">[AVDiffuse]</a>
+         S. Lee, C. Jung, Y. Jang, J. Kim, and J. S. Chung, “See-
+ing Through The Conversation: Audio-Visual Speech Separation
+Based on Diffusion Model,” in ICASSP 2024 - 2024 IEEE Inter-
+national Conference on Acoustics, Speech and Signal Processing
+(ICASSP), 2024, pp. 12 632–12 636.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Dataset</h2>
+        </div>
+      </div>
+
+      <div id="Ref">
+        <span><a href="http://www.openslr.org/12" target="_blank">[VoxCeleb]</a>
+          J. S. Chung, A. Nagrani, and A. Zisserman, “Voxceleb2: Deep
+speaker recognition,” arXiv preprint arXiv:1806.05622, 2018.
+        </span>
+        <br>
+        <br>
+        <span><a href="https://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrs2.html" target="_blank">[LRS2]</a>
+          T. Afouras, J. S. Chung, A. Senior, O. Vinyals, and A. Zisser-
+man, “Deep audio-visual speech recognition,” IEEE transactions
+on pattern analysis and machine intelligence, vol. 44, no. 12, pp.
+8717–8727, 2018.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          This website is based on the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies website template</a>, which is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
