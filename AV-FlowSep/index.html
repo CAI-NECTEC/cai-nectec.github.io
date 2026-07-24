@@ -28,7 +28,7 @@
         <div class="is-size-5 publication-authors">
           <span class="author-block">Pattara Tipaksorn <sup>1</sup></span>
           <span class="author-block">Wayupuk Sommuang<sup>2</sup></span>
-          <span class="author-block">Kwanchiva Thangthai<sup>3</sup></span>
+          <span class="author-block">Kwanchiva Thangthai<sup>1</sup></span>
         </div>
 
         <div class="is-size-5 publication-authors mt-3">
@@ -65,18 +65,18 @@
           <div class="content has-text-justified">
             <p>
               This work addresses the task of separating a target speaker’s
-              voice from mixtures using visual cues. While existing discrim-
-              inative approaches achieve strong speech intelligibility, gener-
-              ative diffusion-based methods improve perceptual quality but
-              require many iterative refinement steps. To address these limi-
-              tations, we propose AV-FlowSep, an audio-visual target speaker
+              voice from mixtures using visual cues. While existing discrim
+              inative approaches achieve strong speech intelligibility, generative 
+              diffusion-based methods improve perceptual quality but
+              require many iterative refinement steps. To address these limitations,
+               we propose AV-FlowSep, an audio-visual target speaker
               separation based on conditional flow matching to learn direct
               transport paths from mixture to clean mel-spectrogram. We
               adopt a latent Diffusion Transformer where temporal visual
               cues from the target speaker are integrated via cross-attention.
               We demonstrate that AV-FlowSep can generate high perceptual
               quality with as few as a single inference step. Experiments on
-              VoxCeleb2 and LRS2 across both speech-speech and speech-
+              VoxCeleb2 and LRS2 across both speech-speech and speech
               noise scenarios, show that our approach achieves competitive
               or superior performance compared to existing baselines, with
               strong cross-dataset generalization and practical computational
@@ -408,8 +408,8 @@
 
     <!-- Grouped the descriptions in a text content block for better spacing -->
     <div class="content" style="margin-top: 1.5rem;">
-      <p><strong>(Left)</strong> AV-FlowSep adopt DiT as base network to learn a vector field to transform mel-spectrogram into clean mel-spectrogram, by recieveing Visual features and time step T as external values.</p>
-      <p><strong>(Right)</strong> Visual features and timesteps T will pass the MLP with separate injection path.</p>
+      <p><strong>(Left)</strong> AV-FlowSep utilizes a DiT (Diffusion Transformer) backbone to learn a vector field that transforms noisy mel-spectrograms into clean mel-spectrograms, conditioned on visual features and the timestep t.</p>
+      <p><strong>(Right)</strong> Visual features and timesteps t are processed through dedicated MLPs via separate injection paths.</p>
     </div>
 
   </div>
@@ -418,7 +418,7 @@
 <section class="section">
   <div class="container is-max-desktop">
     
-    <h2 class="title is-3 has-text-centered">Benchmark</h2>
+    <h2 class="title is-3 has-text-centered">Benchmarks</h2>
     
     <div class="columns is-centered">
       <div class="column has-text-centered">
@@ -434,7 +434,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Model</h2>
+          <h2 class="title is-3">Models</h2>
         </div>
       </div>
 
@@ -483,8 +483,7 @@ national Conference on Acoustics, Speech and Signal Processing
 
       <div id="Ref">
         <span><a href="http://www.openslr.org/12" target="_blank">[VoxCeleb]</a>
-          J. S. Chung, A. Nagrani, and A. Zisserman, “Voxceleb2: Deep
-speaker recognition,” arXiv preprint arXiv:1806.05622, 2018.
+          Chung, J.S., Nagrani, A., Zisserman, A. (2018) VoxCeleb2: Deep Speaker Recognition. Proc. Interspeech 2018, 1086-1090, doi: 10.21437/Interspeech.2018-1929
         </span>
         <br>
         <br>
