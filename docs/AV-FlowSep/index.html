@@ -408,8 +408,8 @@
 
     <!-- Grouped the descriptions in a text content block for better spacing -->
     <div class="content" style="margin-top: 1.5rem;">
-      <p><strong>(Left)</strong> AV-FlowSep utilizes a DiT (Diffusion Transformer) backbone to learn a vector field that transforms noisy mel-spectrograms into clean mel-spectrograms, conditioned on visual features and the timestep t.</p>
-      <p><strong>(Right)</strong> Visual features and timesteps t are processed through dedicated MLPs via separate injection paths.</p>
+      <p><strong>(Left)</strong> AV-FlowSep uses a Diffusion Transformer (DiT) backbone to learn a vector field that transforms the mixture mel-spectrogram into a clean mel-spectrogram, conditioned on visual features and the timestep t. An ODE solver generates the clean mel-spectrogram, which a vocoder converts to a waveform.</p>
+      <p><strong>(Right)</strong> Audio features pass through the DiT block, where the timestep t modulates each layer via AdaLN (scale γ, shift β), and visual features are fused through cross-attention (audio as queries, visual as keys/values) to guide target speaker separation.</p>
     </div>
 
   </div>
